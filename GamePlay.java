@@ -10,17 +10,19 @@ import java.util.HashMap;
 
 public class GamePlay {
 
-    private static HashMap<Integer, GameNode> gameMap = new HashMap<Integer, GameNode>();
+    private static HashMap<Integer, GameNode> gameMap;
     private static GameNode currentNode;
 
     public static void main(String[] args) throws IOException {
 
+        gameMap = new HashMap<Integer, GameNode>();
         readFile("CYOA choices.txt");
-        GUI.createGUI("WelcomeScreen.PNG");
 
+        GUI.createGUI("WelcomeScreen.PNG");
     }
 
     public static void playGame() {
+
         currentNode = gameMap.get(1);
 
         //have the GUI display the contents of the first node
@@ -28,24 +30,24 @@ public class GamePlay {
     }
     //move to the next node according to which button was pressed
     public static void leftButtonPressed() {
-        currentNode = gameMap.get(currentNode.getNextRight());
+        currentNode = gameMap.get(currentNode.getNextLeft());
 
         //if the current Node is not an end node (meaning it is the last node you visit before you die or win),
         //update the GUI to display the componenets of this node
         if (currentNode.getNodeID() > 0) {
             GUI.updateGUI(currentNode);
         } else {
-            GUI.createEndGUI(currentNode);
+            GUI.updateGUIEnd(currentNode);
         }
     }
 
     public static void rightButtonPressed() {
-        currentNode = gameMap.get(currentNode.getNextLeft());
+        currentNode = gameMap.get(currentNode.getNextRight());
 
         if (currentNode.getNodeID() > 0) {
             GUI.updateGUI(currentNode);
         } else {
-            GUI.createEndGUI(currentNode);
+            GUI.updateGUIEnd(currentNode);
         }
     }
 
@@ -59,10 +61,10 @@ public class GamePlay {
 
         int ID = -1;
         String prompt = "";
-        String OP1ButtonTitle = "";
-        String OP2ButtonTitle = "";
-        int OP1NextNodeID = -1;
-        int OP2NextNodeID = -1;
+        String leftButtonTitle = "";
+        String rightButtonTitle = "";
+        int leftNextNodeID = -1;
+        int rightNextNodeID = -1;
         String backgroundImage = "";
 
 
@@ -73,18 +75,19 @@ public class GamePlay {
         try{
             ID = Integer.parseInt(br.readLine());
             prompt = br.readLine();
-            OP1ButtonTitle = br.readLine();
-            OP2ButtonTitle = br.readLine();
-            OP1NextNodeID = Integer.parseInt(br.readLine());
-            OP2NextNodeID = Integer.parseInt(br.readLine());
+            leftButtonTitle = br.readLine();
+            rightButtonTitle = br.readLine();
+            leftNextNodeID = Integer.parseInt(br.readLine());
+            rightNextNodeID = Integer.parseInt(br.readLine());
             backgroundImage = br.readLine();
         }
         catch(NumberFormatException e){
             System.out.println(e.getMessage());
         }
         //construct a new gameNode from file data
-            GameNode gameNode = new GameNode(ID, prompt, backgroundImage, OP1ButtonTitle, OP2ButtonTitle, OP1NextNodeID, OP2NextNodeID);
+           GameNode gameNode = new GameNode(ID, prompt, backgroundImage, leftButtonTitle, rightButtonTitle, leftNextNodeID, rightNextNodeID);
             gameMap.put(gameNode.getNodeID(), gameNode);
+
         }
 
         br.close();

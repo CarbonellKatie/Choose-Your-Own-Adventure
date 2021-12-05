@@ -4,23 +4,26 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 
 
 //class to handle all com.basePackage.GUI methods, only method that needs to be called from the outside is createGUI once in main and
 //setImage when we move to the next gameNode
 //Main class does not need to know about anything that happens here, just needs to create the gui and tell it to change picture
 public class GUI {
-    private static JFrame frame;
+    private static JFrame frame = new JFrame();
     private static ImageIcon imageIcon;
     private static JButton leftButton;
     private static JButton rightButton;
     private static JLabel pictureLabel = new JLabel();
     private static JLabel promptLabel;
     private static Actionlistener actionlistener;
+    private static endActionListener endListener;
 
     public static void createGUI(String welcomePicture){
-        frame = new JFrame();
+        //frame = new JFrame();
         actionlistener = new Actionlistener();
+        endListener = new endActionListener();
 
         JButton playButton = new JButton("Play");
         Dimension dimension = new Dimension(300, 50);
@@ -46,7 +49,7 @@ public class GUI {
         leftButton.setPreferredSize(dimension);
         rightButton.setPreferredSize(dimension);
         leftButton.addActionListener(actionlistener);
-        leftButton.addActionListener(actionlistener);
+        rightButton.addActionListener(actionlistener);
 
         promptLabel = new JLabel("prompt here");
 
@@ -66,10 +69,6 @@ public class GUI {
 
     }
 
-    public static void createEndGUI(GameNode endNode){
-        JButton playAgain = new JButton("Play Again");
-        playAgain.addActionListener(actionlistener);
-    }
 
     public static void frameInit(){
         frame.pack();
@@ -83,10 +82,17 @@ public class GUI {
         updatePrompt(currentNode.getPrompt());
 
     }
+    public static void updateGUIEnd(GameNode currentNode){
+        updateGUI(currentNode);
+        leftButton.removeActionListener(actionlistener);
+        rightButton.removeActionListener(actionlistener);
+        leftButton.addActionListener(endListener);
+        rightButton.addActionListener(endListener);
+    }
 
-    public static void updateButtonNames(String rightButtonName, String leftButtonName){
-        leftButton.setName(rightButtonName);
-        rightButton.setName(leftButtonName);
+    public static void updateButtonNames(String leftButtonName, String rightButtonName){
+        leftButton.setText(leftButtonName);
+        rightButton.setText(rightButtonName);
     }
 
     public static void updatePrompt(String prompt){
@@ -117,6 +123,20 @@ public class GUI {
             }
             else if(e.getSource() == rightButton){
                 GamePlay.rightButtonPressed();
+            }
+        }
+    }
+    public static class endActionListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            //if the use pressed play again, call createGUi to create a new GUI and begin at the first GameNode
+            if(e.getSource() == leftButton){
+                //frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+                createGUI("WelcomeScreen.PNG");
+            }
+            else{
+                System.exit(0);
             }
         }
     }
