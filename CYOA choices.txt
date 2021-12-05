@@ -1,0 +1,24 @@
+-----
+1
+You are at a fork in the road, do you want to go left or right?
+Left
+Right
+2
+3
+images/crossroads.PNG
+-----
+2
+You travel left and see a bear in the middle of the road, do you run or fight?
+Run
+Fight
+7
+-2
+images/bear.PNG
+-----
+-2
+You tried to fight the bear and were killed. Game Over.
+Play Again
+Quit
+0
+0
+images/GameOver.PNG
