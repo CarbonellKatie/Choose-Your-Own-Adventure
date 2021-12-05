@@ -11,22 +11,22 @@ public class GameNode {
     private static JPanel graphicsPanel = new JPanel();         //TODO: add in name of background image later
     private String backgroundImage;
 
-    private String Op1ButtonName;
-    private int nextOp1;  //location of next node if the option 1 button is pressed
-    private String Op2ButtonName;
-    private int nextOp2;   //location of next Node in the hashTable if option 2 button is pressed
+    private String leftButtonName;
+    private int nextLeft;  //location of next node if the option 1 button is pressed
+    private String rightButtonName;
+    private int nextRight;   //location of next Node in the hashTable if option 2 button is pressed
 
     //go to next node when right option was chosen
     public void goRight(){
 
     }
     //return ID of next node if OP1 button is pressed
-    public int getNextOp1(){
-        return nextOp1;
+    public int getNextLeft(){
+        return nextLeft;
     }
     //return the ID of the next node if OP2 button is pressed
-    public int getNextOp2(){
-        return nextOp2;
+    public int getNextRight(){
+        return nextRight;
     }
 
     //go to next node when left option was chosen
@@ -39,11 +39,11 @@ public class GameNode {
     public String getPrompt(){
         return prompt;
     }
-    public String getOp1ButtonName(){
-        return Op1ButtonName;
+    public String getLeftButtonName(){
+        return leftButtonName;
     }
-    public String getOp2ButtonName(){
-        return Op2ButtonName;
+    public String getRightButtonName(){
+        return rightButtonName;
     }
     public String getImage(){
         return backgroundImage;
@@ -53,13 +53,13 @@ public class GameNode {
         //TODO: Delete later
     }
 
-    public GameNode(int nodeID, String prompt, String backgroundImage, String op1ButtonName, String op2ButtonName, int nextOp1, int nextOp2) {
+    public GameNode(int nodeID, String prompt, String backgroundImage, String leftButtonName, String rightButtonName, int nextLeft, int nextRight) {
         this.nodeID = nodeID;
         this.prompt = prompt;
         this.backgroundImage = backgroundImage;
-        Op1ButtonName = op1ButtonName;
-        this.nextOp1 = nextOp1;
-        Op2ButtonName = op2ButtonName;
-        this.nextOp2 = nextOp2;
+        this.leftButtonName = leftButtonName;
+        this.nextLeft = nextLeft;
+        this.rightButtonName = rightButtonName;
+        this.nextRight = nextRight;
     }
 }
