@@ -2,9 +2,6 @@ package com.basePackage;
 
 import java.io.*;
 import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.LinkedList;
-import java.util.Scanner;
 
 /* Notes:
         *Node IDs start at 1, not 0
@@ -16,19 +13,23 @@ public class GamePlay {
     private static HashMap<Integer, GameNode> gameMap = new HashMap<Integer, GameNode>();
 
     public static void main(String[] args) throws IOException {
-        //HashMap to store a GameNode by its key (GameNode's ID, GameNode)
-       // testing.test();
+
         readFile("CYOA choices.txt");
-        playGame(1);
+        GUI.createGUI("WelcomeScreen.PNG", gameMap.get(1));
+
     }
 
-    public static void playGame(int NodeID){
-        //create the GUI, set initial image to welcome screen image
-        GUI.createGUI("WelcomeScreen.PNG");
+    public static void playGame(){
 
-        Scanner stdin = new Scanner(System.in);
-
+        System.out.println("got here");
         GameNode currentNode = gameMap.get(1);
+        GUI.updateGUI(currentNode);
+
+        while(currentNode.getNodeID() > 0){
+
+
+
+        }
         //while(currNode.right)
        /* while(currentNode.getNodeID() > 0){
             System.out.println(currentNode.getPrompt());

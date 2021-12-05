@@ -20,6 +20,15 @@ public class GameNode {
     public void goRight(){
 
     }
+    //return ID of next node if OP1 button is pressed
+    public int getNextOp1(){
+        return nextOp1;
+    }
+    //return the ID of the next node if OP2 button is pressed
+    public int getNextOp2(){
+        return nextOp2;
+    }
+
     //go to next node when left option was chosen
     public void goLeft(){
 
@@ -29,6 +38,15 @@ public class GameNode {
     }
     public String getPrompt(){
         return prompt;
+    }
+    public String getOp1ButtonName(){
+        return Op1ButtonName;
+    }
+    public String getOp2ButtonName(){
+        return Op2ButtonName;
+    }
+    public String getImage(){
+        return backgroundImage;
     }
 
     public GameNode(){
