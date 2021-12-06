@@ -1,6 +1,6 @@
 -----
 1
-You are at a fork in the road, do you want to go left or right?
+You stranded in the desert. To your left you see a person, to the right an oasis. Which way do you go?
 Left
 Right
 2
@@ -8,17 +8,81 @@ Right
 images/crossroads.PNG
 -----
 2
-You travel left and see a bear in the middle of the road, do you run or fight?
+You go left and realize the figure you saw was a kangaroo, do you run towards the oasis or try to fight?
 Run
 Fight
-7
--2
-images/bear.PNG
+3
+6
+images/kangaroo.PNG
 -----
 -2
-You tried to fight the bear and were killed. Game Over.
+You tried to fight the kangaroo and were killed. Game Over.
 Play Again
 Quit
 0
 0
 images/GameOver.PNG
+-----
+3
+You run to the oasis, but there is a large snake blocking your path. He offers you passage if you make a deal with him. Do you ask about the deal or try to fight?
+Ask about the deal
+Fight
+5
+9
+images/snake.PNG
+-----
+6
+As you approach the kangaroo, you realize it is 6 feet tell. Do you want to rethink your decision?
+No, fight anyways
+Yes, run towards the Oasis
+-2
+3
+images/kangarooFight.PNG
+-----
+5
+The snake offers to let you pass if you agree to allow it to live in your home and eat your food. Do you take the deal or fight?
+Take the Deal
+Fight
+8
+9
+images/deal.PNG
+-----
+8
+You take the deal, and the snake allows you to pass. You find food and are eventually rescued. Do you honor the deal and bring the snake home with you?
+Yes, honor the deal
+No, leave it there
+10
+11
+images/rescue.PNG
+-----
+9
+You fight the snake, but you are losing badly. You are wounded and will die soon if you don't get to the oasis. The snake offers you the deal again. Do you take it?
+Yes, take the deal
+No, continue fighting
+8
+-3
+
+-----
+-3
+You try to keep fighting, but succumb to your injuries and die. Game over.
+Play Again
+Quit
+0
+0
+images/GameOver.PNG
+-----
+10
+You take the snake with you and are rescued. You feed the snake and it quickly grows to 10 feet long. Do you keep feeding it, or do you kill it while you have the chance?
+Kill It
+Keep Feeding It
+-1000
+12
+
+-----
+-1000
+You kill the snake before it grows large enough to eat you. You win.
+Play Again
+Quit
+0
+0
+images/Win.PNG
